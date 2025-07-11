@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Weather App</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+</head>
+<body>
+
+    <main class="main-container">
+        <header class="input-container">
+            <input class="city-input" placeholder="Search City" type="text" onclick="togglePopularCities()">
+            <button class="search-btn">
+                <span class="material-symbols-outlined">search</span>
+            </button>
+            <button class="location-btn">📍</button>
+            <ul class="popular-cities" id="popularCities" style="display: none;">
+                <li onclick="selectCity('New Delhi')">New Delhi</li>
+                <li onclick="selectCity('London')">London</li>
+                <li onclick="selectCity('Kavali')">Kavali</li>
+                <li onclick="selectCity('Tokyo')">Tokyo</li>
+                <li onclick="selectCity('Sydney')">Sydney</li>
+                <li onclick="selectCity('Dubai')">Dubai</li>
+                <li onclick="selectCity('Singapore')">Singapore</li>
+                <li onclick="selectCity('Mumbai')">Mumbai</li>
+            </ul>
+        </header>
+
+        <section class="weather-info" style="display: none;">
+            <div class="location-date-container">
+                <div class="location">
+                    <span class="material-symbols-outlined">location_on</span>
+                    <h4 class="country-txt">City</h4>
+                </div>
+                <h5 class="current-date-txt regular-txt"></h5>
+            </div>
+            <div class="weather-summary-container">
+                <img src="images/clouds.svg" class="weather-summary" alt="Weather">
+                <div class="weather-summary-info">
+                    <h1 class="temp-txt">-- °C</h1>
+                    <h3 class="condition-txt regular-txt">Condition</h3>
+                </div>
+            </div>
+
+            <div class="weather-conditions-container">
+                <div class="condition-item">
+                    <span class="material-symbols-outlined">water_drop</span>
+                    <div class="condition-info">
+                        <h5 class="regular-txt">Humidity</h5>
+                        <h5 class="humidity-value-txt">--%</h5>
+                    </div>
+                </div>
+                <div class="condition-item">
+                    <span class="material-symbols-outlined">air</span>
+                    <div class="condition-info">
+                        <h5 class="regular-txt">Wind Speed</h5>
+                        <h5 class="wind-value-txt">-- M/s</h5>
+                    </div>
+                </div>
+            </div>
+
+            <div class="forecast-hours-container"></div>
+            <div class="forecast-items-container"></div>
+        </section>
+
+        <section class="search-city section-message">
+            <h1>Search City</h1>
+            <h4 class="regular-txt">Find out the weather conditions of the city</h4>
+        </section>
+
+        <section class="not-found section-message" style="display: none;">
+            <h1>City Not Found</h1>
+            <h4 class="regular-txt">Try searching again</h4>
+        </section>
+
+        <section class="map-container">
+            <div id="map" style="height: 400px;"></div>
+        </section>
+    </main>
+
+</body>
+</html>
